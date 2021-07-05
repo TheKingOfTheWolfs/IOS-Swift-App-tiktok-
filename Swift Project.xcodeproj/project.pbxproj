@@ -19,6 +19,10 @@
 		6F228E572692A97C0077F101 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E552692A97C0077F101 /* ViewController.swift */; };
 		6F228E582692A97C0077F101 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E552692A97C0077F101 /* ViewController.swift */; };
 		6F228E592692A97C0077F101 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E552692A97C0077F101 /* ViewController.swift */; };
+		6F228E5B2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E5A2692AF7C0077F101 /* VideoCollectionViewCell.swift */; };
+		6F228E5C2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E5A2692AF7C0077F101 /* VideoCollectionViewCell.swift */; };
+		6F228E5D2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E5A2692AF7C0077F101 /* VideoCollectionViewCell.swift */; };
+		6F228E5E2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E5A2692AF7C0077F101 /* VideoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,7 @@
 		6F228E392692A23A0077F101 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		6F228E3B2692A23A0077F101 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F228E552692A97C0077F101 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6F228E5A2692AF7C0077F101 /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +112,7 @@
 				6F228E142692A2390077F101 /* ContentView.swift */,
 				6F228E552692A97C0077F101 /* ViewController.swift */,
 				6F228E152692A23A0077F101 /* Assets.xcassets */,
+				6F228E5A2692AF7C0077F101 /* VideoCollectionViewCell.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			files = (
 				6F228E562692A97C0077F101 /* ViewController.swift in Sources */,
 				6F228E3E2692A23A0077F101 /* ContentView.swift in Sources */,
+				6F228E5B2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */,
 				6F228E3C2692A23A0077F101 /* Swift_ProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +333,7 @@
 			files = (
 				6F228E572692A97C0077F101 /* ViewController.swift in Sources */,
 				6F228E3F2692A23A0077F101 /* ContentView.swift in Sources */,
+				6F228E5C2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */,
 				6F228E3D2692A23A0077F101 /* Swift_ProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F228E5D2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */,
 				6F228E582692A97C0077F101 /* ViewController.swift in Sources */,
 				6F228E2F2692A23A0077F101 /* Tests_iOS.swift in Sources */,
 			);
@@ -343,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F228E5E2692AF7C0077F101 /* VideoCollectionViewCell.swift in Sources */,
 				6F228E592692A97C0077F101 /* ViewController.swift in Sources */,
 				6F228E3A2692A23A0077F101 /* Tests_macOS.swift in Sources */,
 			);

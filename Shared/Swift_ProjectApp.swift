@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct Swift_ProjectApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            ViewController()
         }
     }
 }
