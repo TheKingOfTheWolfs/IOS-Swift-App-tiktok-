@@ -28,32 +28,50 @@ struct ContentView_Previews: PreviewProvider {
 
 struct Home: View {
     var body: some View {
+        
+        //Background
     ZStack{
         Color.black.ignoresSafeArea()
 //        Image("testpic")
         
-        HStack{
-            Spacer()
-            VStack(spacing: 8){
-        Spacer()
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-            Image(systemName: "person")
-                .foregroundColor(Color.white)
-            Text("1021")
-        }).padding()
+        //NavBar rightSide
         
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-            Image(systemName: "heart").foregroundColor(Color.white)
-            Text("1021")
-        }).padding()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-            Image(systemName: "message").foregroundColor(Color.white)
-            Text("1021")
-        }).padding()
+        VStack{
+            
+            HStack{
                 Spacer()
-      }.padding(5)
+                VStack(spacing: 35){
+                    
+                
+                Button(action: {
+                    
+                }) {
+                    Image("profile")
+                        .renderingMode(.original).resizable().frame(width: 55, height: 55).clipShape(Circle())
+          }
+                Button(action: {
+                    
+                }) {
+                    
+                    VStack(spacing: 8){
+                    Image(systemName:"suit.heart.fill").foregroundColor(Color.white).font(.title)
+                        Text("22k").foregroundColor(.white)
+                
+            }
+          }
+                Button(action: {
+                    
+                }) {
+                    
+                    VStack(spacing: 8){
+                    Image(systemName:"message.fill").foregroundColor(Color.white).font(.title)
+                        Text("22k").foregroundColor(.white)
+                
+            }
+          }
         }
-        
+            }
+        //NavBar Pannel bottom page
         VStack(spacing: 0.0){
             Spacer()
             
@@ -78,5 +96,7 @@ struct Home: View {
         }
         
     }
+        .padding(.bottom, 55)
     }
+}
 }
