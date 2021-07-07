@@ -20,6 +20,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            
         
         
         
@@ -45,16 +46,15 @@ struct Home: View {
         
         //Background
         ZStack{
-    
-            PlayerView(data: self.$data)
+            Color.black
+                           .ignoresSafeArea()
+//            PlayerView(data: self.$data)
             
             
             
             
 //NavBar rightSide
             VStack{
-                
-                
                 HStack{
                     VStack{
                         
@@ -113,7 +113,7 @@ struct Home: View {
                 }
     
             
-            }.padding(.bottom, 110.0)
+//            }.padding(.bottom, 110.0)
             
         
 //NavBar Bottom
@@ -167,10 +167,14 @@ struct Home: View {
             }//Hstack
             }//VStack
         }//ZStack
-                    
+//            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+//            .padding(.bottom,(UIApplication.shared.windows.first?.safeAreaInsets.bottom)! + 5)
         
     }//View
+//        .background(Color.black.edgesIgnoringSafeArea(.all))
+//        .edgesIgnoringSafeArea(.all)
 }//View
+}
 
 
 
@@ -180,15 +184,16 @@ struct PlayerView : View {
     
     var body: some View {
         VStack {
-            ForEach(self.data) {
-                i in
-                Player(player: i.player).frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)//full screensize
+            ForEach(self.data) {i in
+                Player(player: i.player).frame(width: UIScreen.main.bounds.width,
+                           height:UIScreen.main.bounds.height)//full screensize
             }
                 
             
         }
     }
 }
+
     
     struct Player : UIViewControllerRepresentable {
         
@@ -220,6 +225,39 @@ struct Video : Identifiable {
     var player : AVPlayer
     var replay : Bool
 }
+
+//struct PlayerScrollView : UIViewRepresentable {
+//
+//    @Binding var data : [Video]
+//
+//    func makeUIView(context: Context) -> UIScrollView {
+//        let view = UIScrollView()
+//
+//        let childView = UIHostingController(rootView:  PlayerView(data: self.$data))
+//
+//        //each children occupies one full screen
+//        childView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+//
+//        view.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+//
+//        view.addSubview(childView.view)
+//        view.showsVerticalScrollIndicator = false
+//        view.showsHorizontalScrollIndicator = false
+//        //to ignore safe area...
+//        view.contentInsetAdjustmentBehavior = .never
+//        view.isPagingEnabled = true
+//
+//
+//        return view
+//
+//
+//    }
+//
+//    func updateUIView(_ uiView: UIScrollView, context: Context) {
+//
+//    }
+//}
+
 
 
 
