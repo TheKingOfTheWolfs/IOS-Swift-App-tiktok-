@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import AVKit
 
 struct ContentView: View {
     var body: some View {
@@ -27,18 +28,56 @@ struct ContentView_Previews: PreviewProvider {
 
 
 struct Home: View {
+    
+    @State var index = 0
+    @State var top = 0
+    @State var data = [
+        Video(id: 0, player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=uVU37ZY3noU&ab_channel=AzzeGang")!), replay: false),
+        Video(id: 1, player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=3bCKiNxPdt4&ab_channel=PeopleAreAwesome")!), replay: false),
+        Video(id: 2, player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=l5GQIQpI7Zk&ab_channel=PeopleAreAwesome")!), replay: false),
+    ]
+    
+    
+    
     var body: some View {
+        
+      
         
         //Background
         ZStack{
-            Color.black.ignoresSafeArea()
-            //        Image("testpic")
+    
+            PlayerView(data: self.$data)
             
-            //NavBar rightSide
             
+            
+            
+//NavBar rightSide
             VStack{
                 
+                
                 HStack{
+                    VStack{
+                        
+                        HStack{
+                            
+                    Button(action: {
+                        self.top = 0
+                    }) {
+                        Text("Following").foregroundColor(self.top == 0 ? .white : Color.white.opacity(0.45)).fontWeight(self.top == 0 ? .bold : .none)
+                    }.padding(.vertical)
+                    Button(action: {
+                        self.top = 1
+                    }) {
+                        Text("For You").foregroundColor(self.top == 1 ? .white : Color.white.opacity(0.45)).fontWeight(self.top == 1 ? .bold : .none)
+                        
+                    }
+                            
+                        
+                        }
+                        .padding(.leading, 120.0)
+                        Spacer()
+                    }
+                    
                     Spacer()
                     VStack(spacing: 35){
                         Spacer()
@@ -46,7 +85,7 @@ struct Home: View {
                         Button(action: {
                             
                         }) {
-                            Image("profile")
+                            Image("testpic")
                                 .renderingMode(.original).resizable().frame(width: 55, height: 55).clipShape(Circle())
                         }
                         
@@ -67,7 +106,7 @@ struct Home: View {
                             VStack(spacing: 8){
                                 Image(systemName:"message.fill").foregroundColor(Color.white).font(.title)
                                 Text("22k").foregroundColor(.white)
-                                
+                     
                             }
                         }
                     }
@@ -125,22 +164,76 @@ struct Home: View {
                 }
             
             
-            
-            
-            
-            
-            
-            
-            
-            
             }//Hstack
             }//VStack
         }//ZStack
                     
         
     }//View
-    
 }//View
+
+
+
+struct PlayerView : View {
+    
+    @Binding var data : [Video]
+    
+    var body: some View {
+        VStack {
+            ForEach(self.data) {
+                i in
+                Player(player: i.player).frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)//full screensize
+            }
+                
+            
+        }
+    }
+}
+    
+    struct Player : UIViewControllerRepresentable {
+        
+        var player : AVPlayer
+        
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+        let view = AVPlayerViewController()
+        view.player = player
+        view.showsPlaybackControls = false
+        view.videoGravity = .resizeAspectFill
+            return view
+        }
+        func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
+            
+        }
+    }
+
+
+class Host : UIHostingController<ContentView> {
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+}
+
+
+struct Video : Identifiable {
+    
+    var id : Int
+    var player : AVPlayer
+    var replay : Bool
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 
                 
                                 
