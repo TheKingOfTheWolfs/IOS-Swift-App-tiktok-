@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import AVKit
+import FirebaseStorage
 
 struct ContentView: View {
     var body: some View {
@@ -33,7 +34,7 @@ struct Home: View {
     @State var index = 0
     @State var top = 0
     @State var data = [
-        Video(id: 0, player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=uVU37ZY3noU&ab_channel=AzzeGang")!), replay: false),
+        Video(id: 0, player: AVPlayer(url: URL(string: "gs://database-for-tiktok-clone.appspot.com/Videos/Pexels Videos 1510090.mp4")!), replay: false),
         Video(id: 1, player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=3bCKiNxPdt4&ab_channel=PeopleAreAwesome")!), replay: false),
         Video(id: 2, player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=l5GQIQpI7Zk&ab_channel=PeopleAreAwesome")!), replay: false),
     ]
@@ -46,9 +47,8 @@ struct Home: View {
         
         //Background
         ZStack{
-            Color.black
-                           .ignoresSafeArea()
-//            PlayerView(data: self.$data)
+         
+            PlayerView(data: self.$data)
             
             
             
@@ -113,7 +113,7 @@ struct Home: View {
                 }
     
             
-//            }.padding(.bottom, 110.0)
+            }.padding(.bottom, 110.0)
             
         
 //NavBar Bottom
@@ -166,15 +166,16 @@ struct Home: View {
             
             }//Hstack
             }//VStack
-        }//ZStack
 //            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
 //            .padding(.bottom,(UIApplication.shared.windows.first?.safeAreaInsets.bottom)! + 5)
-        
-    }//View
+        }//ZStack
 //        .background(Color.black.edgesIgnoringSafeArea(.all))
 //        .edgesIgnoringSafeArea(.all)
+//
+    }//View
+   
 }//View
-}
+
 
 
 
@@ -185,8 +186,9 @@ struct PlayerView : View {
     var body: some View {
         VStack {
             ForEach(self.data) {i in
-                Player(player: i.player).frame(width: UIScreen.main.bounds.width,
-                           height:UIScreen.main.bounds.height)//full screensize
+                Player(player: i.player)
+//                    .frame(width: UIScreen.main.bounds.width,
+//                           height:UIScreen.main.bounds.height)//full screensize
             }
                 
             
@@ -194,69 +196,77 @@ struct PlayerView : View {
     }
 }
 
+struct Player : UIViewControllerRepresentable {
     
-    struct Player : UIViewControllerRepresentable {
-        
-        var player : AVPlayer
-        
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let view = AVPlayerViewController()
-        view.player = player
-        view.showsPlaybackControls = false
-        view.videoGravity = .resizeAspectFill
-            return view
-        }
-        func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
-            
-        }
+    var player : AVPlayer
+    
+    
+func makeUIViewController(context: Context) -> AVPlayerViewController {
+    let view = AVPlayerViewController()
+    view.player = player
+
+    view.showsPlaybackControls = false
+    view.videoGravity = .resizeAspectFill
+    
+    
+        return view
     }
+    
+    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
+        
+    }
+}
 
 
 class Host : UIHostingController<ContentView> {
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
+override var preferredStatusBarStyle: UIStatusBarStyle{
+    return .lightContent
+}
 }
 
 
 struct Video : Identifiable {
-    
-    var id : Int
-    var player : AVPlayer
-    var replay : Bool
+
+var id : Int
+var player : AVPlayer
+var replay : Bool
 }
 
-//struct PlayerScrollView : UIViewRepresentable {
-//
-//    @Binding var data : [Video]
-//
-//    func makeUIView(context: Context) -> UIScrollView {
-//        let view = UIScrollView()
-//
-//        let childView = UIHostingController(rootView:  PlayerView(data: self.$data))
-//
-//        //each children occupies one full screen
-//        childView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
-//
-//        view.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
-//
-//        view.addSubview(childView.view)
-//        view.showsVerticalScrollIndicator = false
-//        view.showsHorizontalScrollIndicator = false
-//        //to ignore safe area...
-//        view.contentInsetAdjustmentBehavior = .never
-//        view.isPagingEnabled = true
-//
-//
-//        return view
-//
-//
-//    }
-//
-//    func updateUIView(_ uiView: UIScrollView, context: Context) {
-//
-//    }
-//}
+struct PlayerScrollView : UIViewRepresentable {
+
+@Binding var data : [Video]
+
+func makeUIView(context: Context) -> UIScrollView {
+    let view = UIScrollView()
+
+    let childView = UIHostingController(rootView:  PlayerView(data: self.$data))
+
+    //each children occupies one full screen
+    childView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+
+    view.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * CGFloat((data.count)))
+
+    view.addSubview(childView.view)
+    view.showsVerticalScrollIndicator = false
+    view.showsHorizontalScrollIndicator = false
+    //to ignore safe area...
+    view.contentInsetAdjustmentBehavior = .never
+    view.isPagingEnabled = true
+
+
+    return view
+
+
+}
+
+func updateUIView(_ uiView: UIScrollView, context: Context) {
+
+}
+}
+
+
+    
+ 
 
 
 

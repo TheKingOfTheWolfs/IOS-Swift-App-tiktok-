@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0B1CC62697E9BD00A7FB33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F0B1CC52697E9BD00A7FB33 /* GoogleService-Info.plist */; };
 		6F228E2F2692A23A0077F101 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E2E2692A23A0077F101 /* Tests_iOS.swift */; };
 		6F228E3A2692A23A0077F101 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E392692A23A0077F101 /* Tests_macOS.swift */; };
 		6F228E3C2692A23A0077F101 /* Swift_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F228E132692A2390077F101 /* Swift_ProjectApp.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F0B1CC52697E9BD00A7FB33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F228E132692A2390077F101 /* Swift_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_ProjectApp.swift; sourceTree = "<group>"; };
 		6F228E142692A2390077F101 /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
 		6F228E152692A23A0077F101 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		6F228E122692A2390077F101 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6F0B1CC52697E9BD00A7FB33 /* GoogleService-Info.plist */,
 				6F228E132692A2390077F101 /* Swift_ProjectApp.swift */,
 				6F228E142692A2390077F101 /* ContentView.swift */,
 				6F228E552692A97C0077F101 /* ViewController.swift */,
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F228E402692A23A0077F101 /* Assets.xcassets in Resources */,
+				6F0B1CC62697E9BD00A7FB33 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
